@@ -21,6 +21,7 @@ CREATE TABLE niederlassungschweiz (
     vorname VARCHAR(100)
 );
 
+
 -- =========================
 -- Punkt 1
 -- UNION = no duplicates
