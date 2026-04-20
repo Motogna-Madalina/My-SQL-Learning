@@ -2,15 +2,15 @@ USE uebungsdatenbank;
 
 -- 1: Add a new qualification: SQL
 INSERT INTO qualifikationen (qid, bezeichnung, kuerzel, kategorie)
-VALUES (101, 'SQL', 'ITE', 'Informatik');
+VALUES (1, 'SQL', 'ITE', 'Informatik');
 
 -- 2: Add a new qualification: Sys-Admin
 INSERT INTO qualifikationen (qid, bezeichnung, kuerzel, kategorie)
-VALUES (102, 'Sys-Admin', 'ADA', 'Support');
+VALUES (2, 'Sys-Admin', 'ADA', 'Support');
 
 -- 3: Add a qualification with only a name
 INSERT INTO qualifikationen (qid, bezeichnung)
-VALUES (103, 'Projektleitung');
+VALUES (3, 'Projektleitung');
 
 -- 4: Change text
 UPDATE qualglobal

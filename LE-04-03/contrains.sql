@@ -1,18 +1,17 @@
+-- Create database
 CREATE DATABASE maschinen;
 USE maschinen;
 
--- Punkt 1
-
+-- Punkt 1: Create table with composite primary key
 CREATE TABLE produktionsmaschinen (
     maschinenID INT,
     variante INT,
     bezeichnung VARCHAR(200) NOT NULL,
 
-    PRIMARY KEY(maschinenID, variante )
+    PRIMARY KEY(maschinenID, variante)
 );
 
--- Punkt 2
-
+-- Punkt 2: Use single primary key and UNIQUE constraint
 DROP TABLE produktionsmaschinen;
 CREATE TABLE produktionsmaschinen (
     globalID INT PRIMARY KEY,
@@ -23,19 +22,17 @@ CREATE TABLE produktionsmaschinen (
     UNIQUE (maschinenID, variante)
 );
 
--- Punkt 3
-
+-- Punkt 3: Add runtime columns and CHECK constraint
 DROP TABLE produktionsmaschinen;
 CREATE TABLE produktionsmaschinen (
     globalID INT,
     laufzeit INT,
     maxlaufzeit INT,
-    machinenID INT,
+    maschinenID INT,
     variante INT,
-    bezeichung VARCHAR(200),
+    bezeichnung VARCHAR(200),
 
     PRIMARY KEY (globalID),
-    UNIQUE (machinenID, variante),
+    UNIQUE (maschinenID, variante),
     CHECK (laufzeit < maxlaufzeit)
- );
- 
+);
