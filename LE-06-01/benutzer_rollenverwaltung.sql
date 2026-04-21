@@ -47,6 +47,12 @@ GRANT 'vertrieb' TO 'maria'@'localhost';
 SET DEFAULT ROLE 'vertrieb' TO 'franz'@'localhost';
 SET DEFAULT ROLE 'vertrieb' TO 'maria'@'localhost';
 
+-- ---------------------------------------------------------
+-- In MySQL, a role isn’t active by default. You must run
+-- SET ROLE vertrieb;. With SET DEFAULT ROLE, it activates
+-- automatically when you log in.
+-- ----------------------------------------------------------
+
 -- Modify role: remove INSERT and UPDATE (only SELECT remains)
 REVOKE INSERT, UPDATE
 ON artikels.artikel
