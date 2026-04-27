@@ -1,31 +1,32 @@
-USE Shop_DB_Motogna;
+USE shop_db_motogna;
 
--- Beispieldaten für Tabelle Kunden
-INSERT INTO kunden (vorname, nachname, strasse, hausnummer, postleitzahl, stadt, telefonnummer, email)
+-- Kunden einfügen
+INSERT INTO kunden (vorname, nachname, stadt, email, telefonnummer)
 VALUES
-('Luca', 'Motogna', 'Hauptstrasse', '12', '1010', 'Wien', '06601234567', 'luca.motogna@email.com'),
-('Anna', 'Müller', 'Bahnhofstrasse', '5', '8010', 'Graz', '06641234567', 'anna.mueller@email.com'),
-('Max', 'Schmidt', 'Ringstrasse', '20', '4020', 'Linz', '06761234567', 'max.schmidt@email.com');
+('Max', 'Mustermann', 'Wien', '[max@test.com](mailto:max@test.com)', '111111'),
+('Anna', 'Musterfrau', 'Graz', '[anna@test.com](mailto:anna@test.com)', '222222');
 
--- Beispieldaten für Tabelle Lieferanten
-INSERT INTO lieferanten (name, strasse, hausnummer, postleitzahl, stadt, telefonnummer, email)
+-- Lieferanten einfügen
+INSERT INTO lieferanten (name, stadt, email, telefonnummer)
 VALUES
-('Amazon', 'Industriestrasse', '1', '1010', 'Wien', '0800123456', 'kontakt@amazon.at'),
-('MediaMarkt', 'Shoppingcenter', '10', '4020', 'Linz', '0800654321', 'info@mediamarkt.at'),
-('Saturn', 'Elektronikweg', '3', '8010', 'Graz', '0800987654', 'service@saturn.at');
+('Tech GmbH', 'Wien', '[tech@test.com](mailto:tech@test.com)', '333333'),
+('Office AG', 'Linz', '[office@test.com](mailto:office@test.com)', '444444');
 
--- Beispieldaten für Tabelle Artikel
-INSERT INTO artikel (bezeichnung, beschreibung, preis, lagerbestand, lieferanten_id)
+-- Artikel einfügen
+INSERT INTO artikel (bezeichnung, preis, lagerbestand, lieferanten_id)
 VALUES
-('Laptop', 'Leistungsstarker Laptop', 1200.00, 10, 1),
-('Smartphone', 'Neuestes Modell Smartphone', 800.00, 25, 2),
-('Kopfhörer', 'Kabellose Kopfhörer', 150.00, 50, 3),
-('Maus', 'Wireless Maus', 30.00, 100, 2);
+('Laptop', 1000.00, 10, 1),
+('Maus', 20.00, 50, 2);
 
--- Beispieldaten für Tabelle Verkauf
-INSERT INTO verkauf (kunden_id, lieferanten_id, artikel_id, menge, datum)
+-- Verkauf erstellen
+INSERT INTO verkauf (kunden_id, datum)
 VALUES
-(1, 1, 1, 1, '2024-01-10'),
-(2, 2, 2, 2, '2024-01-11'),
-(3, 3, 3, 1, '2024-01-12'),
-(1, 2, 4, 3, '2024-01-13');
+(1, '2025-01-01'),
+(2, '2025-01-02');
+
+-- Bestellung (Verbindung Verkauf + Artikel)
+INSERT INTO bestellung (verkauf_id, artikel_id, menge)
+VALUES
+(1, 1, 1),
+(1, 2, 2),
+(2, 2, 1);

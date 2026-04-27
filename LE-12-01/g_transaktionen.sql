@@ -1,40 +1,23 @@
-USE Shop_DB_Motogna;
+USE shop_db_motogna;
 
--- Verkauf machen und Lager reduzieren
+-- Transaktion starten
 START TRANSACTION;
 
+-- Lager reduzieren
 UPDATE artikel
 SET lagerbestand = lagerbestand - 1
 WHERE artikel_id = 1;
 
-INSERT INTO verkauf (kunden_id, lieferanten_id, artikel_id, menge, datum)
-VALUES (1, 1, 1, 1, CURDATE());
+-- Neuer Verkauf
+INSERT INTO verkauf (kunden_id, datum)
+VALUES (1, CURDATE());
 
+-- Bestellung hinzufügen
+INSERT INTO bestellung (verkauf_id, artikel_id, menge)
+VALUES (LAST_INSERT_ID(), 1, 1);
+
+-- Alles speichern
 COMMIT;
 
-
--- Neuer Kunde und Verkauf machen
-START TRANSACTION;
-
-INSERT INTO kunden (vorname, nachname)
-VALUES ('Peter', 'Huber');
-
-INSERT INTO verkauf (kunden_id, lieferanten_id, artikel_id, menge, datum)
-VALUES (4, 1, 1, 1, CURDATE());
-
-COMMIT;
-
--- Preis ändern und Verkäufe aktualisieren
-START TRANSACTION;
-
--- Preis im Artikel ändern
-UPDATE artikel
-SET preis = 1100.00
-WHERE artikel_id = 1;
-
--- Verkäufe mit neuem Preis berechnen
-UPDATE verkauf
-SET menge = menge
-WHERE artikel_id = 1;
-
-COMMIT;
+-- Bei Fehler:
+-- ROLLBACK;
