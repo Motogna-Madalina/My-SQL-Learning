@@ -1,12 +1,20 @@
+-- =========================
+-- INDEXES
+-- =========================
 
-
--- make indexes
-CREATE INDEX index_arbeitszeit_mitarbeiter
+-- CREATE
+CREATE INDEX idx_arbeitszeit_mitarbeiter
 ON arbeitszeit (mitarbeiter_id);
 
-CREATE INDEX index_plzort
+CREATE INDEX idx_kreditinstitut_ort_plz
 ON kreditinstitutneu (ort, plz);
 
--- drop indexes
-DROP INDEX index_arbeitszeit_mitarbeiter ON arbeitszeit;
-DROP INDEX index_plzort ON kreditinstitutneu;
+-- =========================
+-- DROP
+-- =========================
+
+ALTER TABLE arbeitszeit
+DROP INDEX idx_arbeitszeit_mitarbeiter;
+
+ALTER TABLE kreditinstitutneu
+DROP INDEX idx_kreditinstitut_ort_plz;

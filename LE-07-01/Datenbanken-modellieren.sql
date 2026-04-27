@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS bibliothek;
 USE bibliothek;
-
+-- verlag = editorial company that publishes books
 CREATE TABLE verlag (
     verlagID INT PRIMARY KEY,
     verlag VARCHAR(100)
@@ -22,7 +22,6 @@ CREATE TABLE fachbuch (
 CREATE TABLE fachbereichfachbuch (
     fachbereichID INT,
     fachbuchID INT,
-    PRIMARY KEY (fachbereichID, fachbuchID),
     FOREIGN KEY (fachbereichID) REFERENCES fachbereich(fachbereichID),
     FOREIGN KEY (fachbuchID) REFERENCES fachbuch(fachbuchID)
 );
