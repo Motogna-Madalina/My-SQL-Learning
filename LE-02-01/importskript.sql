@@ -1,4 +1,6 @@
-create database IF NOT EXISTS uebungsdatenbank CHARACTER SET latin1 COLLATE latin1_german1_ci;
+DROP database IF EXISTS uebungsdatenbank;
+CREATE DATABASE uebungsdatenbank;
+
 use uebungsdatenbank;
 
 /* Lege Tabelle kreditinstitut_auszug an*/
@@ -28,7 +30,7 @@ CREATE TABLE auszubildender_alt
   name character varying(120),
   vorname character varying(120),
   gebdatum date,
-  CONSTRAINT auszubildender_pkey PRIMARY KEY (id)
+  CONSTRAINT auszubildender_key PRIMARY KEY (id)
 );
 
 /* Lege Tabelle umsatzausgaben an */

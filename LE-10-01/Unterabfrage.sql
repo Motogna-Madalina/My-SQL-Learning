@@ -66,11 +66,12 @@ WHERE steuerklasse NOT IN (
 
 -- Punkt 4: Same as Punkt 3 but using EXISTS
 SELECT vorname, nachname
-FROM mitarbeiter m
+FROM mitarbeiter
 WHERE NOT EXISTS (
     SELECT 1
-    FROM steuerklasse s
-    WHERE s.klasse = m.steuerklasse
+    FROM steuerklasse
+    WHERE steuerklasse.klasse = mitarbeiter.steuerklasse
+);
 );
 -- This query checks if a matching tax class exists.
 -- If not, the employee is included in the result.

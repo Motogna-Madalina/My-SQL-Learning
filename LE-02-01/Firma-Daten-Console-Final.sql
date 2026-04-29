@@ -1,3 +1,4 @@
+
 USE uebungsdatenbank;
 
 -- Point 1: Show when employees started and left the company

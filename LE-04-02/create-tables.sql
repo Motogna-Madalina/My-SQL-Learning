@@ -9,9 +9,10 @@ CREATE TABLE if not exists kunden(
 
 DROP TABLE IF EXISTS mitarbeitergeschenk;
 
+
 CREATE TABLE mitarbeitergeschenk (
     geschenkID SMALLINT PRIMARY KEY,
-    artikel VARCHAR(200) NOT NULL,
+    artikel VARCHAR(200) NOT NULL UNIQUE,
     preis DECIMAL(5,2) NOT NULL DEFAULT 0.00,
     jahrzugehörigkeit SMALLINT NOT NULL CHECK (jahrzugehörigkeit IN (5, 10, 15, 20))
 );

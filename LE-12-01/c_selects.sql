@@ -15,6 +15,11 @@ SELECT lagerbestand FROM artikel WHERE artikel_id = 1;
 SELECT * FROM verkauf WHERE kunden_id = 1;
 
 -- Verkäufe von einem Lieferanten
+-- aqui esta como diciendo mira todos las ventas que tienen articulos
+de un proveedor especifico pero marea la perdiz porque no es tan
+directo como decir dame las ventas de un proveedor, sino que hay
+que hacer un join con la tabla de articulos para filtrar por el proveedor
+
 SELECT verkauf.verkauf_id, verkauf.datum
 FROM verkauf
 JOIN bestellung ON verkauf.verkauf_id = bestellung.verkauf_id
@@ -25,6 +30,10 @@ WHERE artikel.lieferanten_id = 1;
 SELECT * FROM artikel WHERE preis < 100;
 
 -- Gesamtumsatz
+--aqui calcula el total de ventas multiplicando
+el precio de cada articulo por la cantidad vendida
+en cada pedido, y luego sumando todo eso para obtener
+el total de ingresos generados por las ventas
 SELECT SUM(artikel.preis * bestellung.menge) AS gesamtumsatz
 FROM bestellung
 JOIN artikel ON bestellung.artikel_id = artikel.artikel_id;
