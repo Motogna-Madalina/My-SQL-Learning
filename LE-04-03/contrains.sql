@@ -1,4 +1,5 @@
 -- Create database
+DROP DATABASE IF EXISTS maschinen;
 CREATE DATABASE maschinen;
 USE maschinen;
 

@@ -1,36 +1,68 @@
-CREATE DATABASE IF NOT EXISTS CD_Datenbank;
-USE CD_Datenbank;
+DROP DATABASE IF EXISTS cd_datenbank;
+CREATE DATABASE IF NOT EXISTS cd_datenbank;
+USE cd_datenbank;
 
-
-CREATE TABLE IF NOT EXISTS INTERPRETEN (
-    InterpretID INT AUTO_INCREMENT PRIMARY KEY,
-    Interpret VARCHAR(255) NOT NULL
-);
-CREATE TABLE IF NOT EXISTS MUSIKRICHTUNG (
-    MusikrichtungID INT AUTO_INCREMENT PRIMARY KEY,
-    Musikrichtung VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS TITLE (
-    TitleNr INT AUTO_INCREMENT PRIMARY KEY,
-    Title VARCHAR(255) NOT NULL,
-    InterpretID INT NOT NULL,
-    Beurteilung VARCHAR(255) NOT NULL,
-    FOREIGN KEY (InterpretID) REFERENCES INTERPRETEN(InterpretID)
+-- ======================
+-- TABLA Musikrichtung
+-- ======================
+CREATE TABLE IF NOT EXISTS Musikrichtung (
+    MusikrichtungID INT PRIMARY KEY,
+    Musikrichtung VARCHAR(255)
 );
 
+-- ======================
+-- TABLA Interpreten
+-- ======================
+CREATE TABLE IF NOT EXISTS Interpreten (
+    InterpretID INT PRIMARY KEY,
+    Interpret VARCHAR(255)
+);
+
+-- ======================
+-- TABLA CD
+-- ======================
 CREATE TABLE IF NOT EXISTS CD (
-    CDNr INT AUTO_INCREMENT PRIMARY KEY,
-    CDName VARCHAR(255) NOT NULL,
-    InterpretID INT,
+    CDNr INT PRIMARY KEY,
+    CDName VARCHAR(255),
     MusikrichtungID INT,
-    FOREIGN KEY (InterpretID) REFERENCES INTERPRETEN(InterpretID),
-    FOREIGN KEY (MusikrichtungID) REFERENCES MUSIKRICHTUNG(MusikrichtungID)
+    FOREIGN KEY (MusikrichtungID) REFERENCES Musikrichtung(MusikrichtungID)
 );
 
-CREATE TABLE IF NOT EXISTS TITLE_CD (
-    TitleNr INT NOT NULL,
-    CDNr INT NOT NULL,
-    FOREIGN KEY (TitleNr) REFERENCES TITLE(TitleNr),
+-- ======================
+-- TABLA Titel
+-- ======================
+CREATE TABLE IF NOT EXISTS Titel (
+    TitelNr INT PRIMARY KEY,
+    Titel VARCHAR(255),
+    Beurteilung INT
+);
+
+-- ======================
+-- TABLA CD_Titel
+-- ======================
+CREATE TABLE IF NOT EXISTS CD_Titel (
+    TitelNr INT,
+    CDNr INT,
+    FOREIGN KEY (TitelNr) REFERENCES Titel(TitelNr),
+    FOREIGN KEY (CDNr) REFERENCES CD(CDNr)
+);
+
+-- ======================
+-- TABLA Titel_Interpreten
+-- ======================
+CREATE TABLE IF NOT EXISTS Titel_Interpreten (
+    InterpretID INT,
+    TitelNr INT,
+    FOREIGN KEY (InterpretID) REFERENCES Interpreten(InterpretID),
+    FOREIGN KEY (TitelNr) REFERENCES Titel(TitelNr)
+);
+
+-- ======================
+-- TABLA CD_Interpreten
+-- ======================
+CREATE TABLE IF NOT EXISTS CD_Interpreten (
+    InterpretID INT,
+    CDNr INT,
+    FOREIGN KEY (InterpretID) REFERENCES Interpreten(InterpretID),
     FOREIGN KEY (CDNr) REFERENCES CD(CDNr)
 );

@@ -1,35 +1,56 @@
 USE cd_datenbank;
-INSERT INTO interpreten (Interpret) VALUES
-('The Beatles'),
-('Pink Floyd'),
-('Led Zeppelin'),
-('Queen'),
-('The Rolling Stones');
 
-INSERT INTO musikrichtung (Musikrichtung) VALUES
-('Rock'),
-('Pop'),
-('Jazz'),
-('Blues'),
-('Classical');
+-- ======================
+-- Musikrichtung
+-- ======================
+INSERT INTO Musikrichtung VALUES
+(1, 'Rock'),
+(2, 'Pop'),
+(3, 'Hip Hop');
 
-INSERT INTO title (Title, InterpretID, Beurteilung) VALUES
-('Hey Jude', 1, 1),
-('Comfortably Numb', 2, 1),
-('Stairway to Heaven', 3, 1),
-('Bohemian Rhapsody', 4, 1),
-('Satisfaction', 5, 1);
+-- ======================
+-- Interpreten
+-- ======================
+INSERT INTO Interpreten VALUES
+(1, 'Queen'),
+(2, 'Taylor Swift'),
+(3, 'Eminem');
 
-INSERT INTO CD (CDNR, CDNAME, INTERPRETID, MUSIKRICHTUNGID) VALUES
-(1, 'Abbey Road', 1, 1),
-(2, 'The Dark Side of the Moon', 2, 1),
-(3, 'Led Zeppelin IV', 3, 1),
-(4, 'A Night at the Opera', 4, 1),
-(5, 'Let It Bleed', 5, 1);
+-- ======================
+-- CD
+-- ======================
+INSERT INTO CD VALUES
+(1, 'Best of Rock', 1),
+(2, 'Pop Hits', 2);
 
-INSERT INTO title_cd (TitleNr, CDNr) VALUES
+-- ======================
+-- Titel
+-- ======================
+INSERT INTO Titel VALUES
+(1, 'Bohemian Rhapsody', 5),
+(2, 'Shake It Off', 4),
+(3, 'Lose Yourself', 5);
+
+-- ======================
+-- CD_Titel
+-- ======================
+INSERT INTO CD_Titel VALUES
 (1, 1),
 (2, 2),
-(3, 3),
-(4, 4),
-(5, 5);
+(3, 2);
+
+-- ======================
+-- Titel_Interpreten
+-- ======================
+INSERT INTO Titel_Interpreten VALUES
+(1, 1),
+(2, 2),
+(3, 3);
+
+-- ======================
+-- CD_Interpreten
+-- ======================
+INSERT INTO CD_Interpreten VALUES
+(1, 1),
+(2, 2),
+(3, 2);

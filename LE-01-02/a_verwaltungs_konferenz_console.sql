@@ -25,12 +25,8 @@ CREATE TABLE IF NOT EXISTS themen (
 );
 
 CREATE TABLE IF NOT EXISTS teilnehmer_themen (
-  id_teilnehmer INT NOT NULL,
-  id_themen INT NOT NULL,
-
-PRIMARY KEY (id_teilnehmer, id_themen),
-  FOREIGN KEY (id_teilnehmer)
-    REFERENCES teilnehmer(id_teilnehmer),
-  FOREIGN KEY (id_themen)
-    REFERENCES themen(id_themen)
+id_teilnehmer INT NOT NULL,
+id_themen INT NOT NULL,
+FOREIGN KEY (id_teilnehmer) REFERENCES teilnehmer(id_teilnehmer),
+FOREIGN KEY (id_themen) REFERENCES themen(id_themen)
 );

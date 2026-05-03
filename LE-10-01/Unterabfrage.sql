@@ -1,4 +1,4 @@
-
+DROP DATABASE IF EXISTS mitarbeiter_bonus;
 CREATE DATABASE IF NOT EXISTS mitarbeiter_bonus;
 USE mitarbeiter_bonus;
 -- Create employee table
@@ -15,7 +15,9 @@ CREATE TABLE mitarbeiter (
 CREATE TABLE sachpraemie (
     praemieid INT AUTO_INCREMENT PRIMARY KEY,
     mitarbeiterid INT,
-    preis DECIMAL(10,2)
+    preis DECIMAL(10,2),
+    grund VARCHAR(255),
+    FOREIGN KEY (mitarbeiterid) REFERENCES mitarbeiter(mitarbeiterid)
 );
 -- Stores bonuses assigned to employees
 

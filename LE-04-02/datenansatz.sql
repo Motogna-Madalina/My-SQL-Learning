@@ -1,3 +1,5 @@
+USE kundenverwaltung;
+
 INSERT INTO kunden (Name, Vorname, Email, Telefon, Geburtsdatum)
 VALUES ('Garcia', 'Juan', 'juan@gmail.com', '123456789', '1990-05-10');
 

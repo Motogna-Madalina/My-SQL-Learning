@@ -1,3 +1,7 @@
+ CREATE DATABASE IF NOT EXISTS kundenverwaltung;
+USE kundenverwaltung;
+
+
 CREATE TABLE if not exists kunden(
     Kunden_ID INT PRIMARY KEY AUTO_INCREMENT,
     Name VARCHAR(100),
